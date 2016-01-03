@@ -1,6 +1,5 @@
 package dto;
 
-import infrastructure.common.ApplicationEntity;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
@@ -8,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @NamedQuery(name = "Tenant.getAll", query = "SELECT t FROM Tenant t")
-public class Tenant implements ApplicationEntity {
+public class Tenant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

@@ -5,10 +5,10 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>dto.Tenant</class>
         <properties>
-            <property name="hibernate.connection.url" value=""/>
+            <property name="hibernate.connection.url" value="jdbc:h2:tcp://localhost/~/NNSE"/>
             <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
-            <property name="hibernate.connection.username" value=""/>
-            <property name="hibernate.connection.password" value=""/>
+            <property name="hibernate.connection.username" value="sa"/>
+            <property name="hibernate.connection.password" value="sa"/>
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>

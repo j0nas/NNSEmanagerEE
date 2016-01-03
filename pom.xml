@@ -70,6 +70,9 @@
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>1.0.2.Final</version>
+                <configuration>
+                    <name>nnse.war</name>
+                </configuration>
             </plugin>
 
             <plugin>

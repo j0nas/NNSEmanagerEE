@@ -1,7 +1,6 @@
-package infrastructure.tenant;
+package tenant.tenant;
 
 import dto.Tenant;
-import infrastructure.common.Dao;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -9,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
-public class TenantDao implements Dao<Tenant> {
+public class TenantDao {
     @PersistenceContext(unitName = "NNSE")
     private EntityManager entityManager;
 

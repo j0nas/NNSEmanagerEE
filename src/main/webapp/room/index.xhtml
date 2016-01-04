@@ -7,17 +7,19 @@
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="../template.xhtml">
     <ui:define name="content">
-        <p:dataTable id="tenants" var="tenant" value="#{tenantController.getAll()}">
-            <p:column headerText="Navn">
-                <h:outputText value="#{tenant.firstName} #{tenant.lastName}"/>
+        <p:dataTable id="rooms" var="room" value="#{roomController.getAll()}">
+            <p:column headerText="Nummer">
+                <h:outputText value="#{room.number}"/>
+            </p:column>
+            <p:column headerText="Primær leietaker">
+                <h:outputText value="#{room.primaryLeaser.firstName} #{room.primaryLeaser.lastName}"/>
             </p:column>
             <p:column headerText="Handlinger">
                 <p:link outcome="details">
-                    <f:param name="id" value="#{tenant.id}"/>
+                    <f:param name="id" value="#{room.id}"/>
                     <p:button value="Detaljer"/>
                 </p:link>
-
-                <p:commandButton value="Slett" action="#{tenantController.delete(tenant.id)}" update="tenants"/>
+                <p:commandButton value="Slett" action="#{roomController.delete(room.id)}" update="rooms"/>
             </p:column>
         </p:dataTable>
     </ui:define>

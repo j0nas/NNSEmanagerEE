@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<ui:composition template="../template.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <h:panelGrid columns="3" cellpadding="5">
+                <p:outputLabel for="number" value="Nummer"/>
+                <p:inputText id="number" value="#{roomController.item.number}" required="true"/>
+                <p:message for="number"/>
+
+                <p:outputLabel for="pricePerMonth" value="Pris per måned"/>
+                <p:inputText id="pricePerMonth" value="#{roomController.item.pricePerMonth}" required="true"/>
+                <p:message for="pricePerMonth"/>
+
+                <p:outputLabel for="primaryLeaser" value="Primær leietaker"/>
+                <p:selectOneMenu id="primaryLeaser" value="#{roomController.primaryTenantId}" required="true">
+                    <f:selectItem itemLabel="Velg primær leietaker" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems var="tenant" value="#{tenantController.getTenants()}"/>
+                </p:selectOneMenu>
+                <p:message for="primaryLeaser"/>
+            </h:panelGrid>
+            <p:commandButton value="Submit" ajax="false" action="#{roomController.persist}" icon="ui-icon-check"/>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

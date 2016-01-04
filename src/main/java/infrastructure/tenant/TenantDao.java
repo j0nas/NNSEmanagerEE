@@ -1,4 +1,4 @@
-package tenant.tenant;
+package infrastructure.tenant;
 
 import dto.Tenant;
 

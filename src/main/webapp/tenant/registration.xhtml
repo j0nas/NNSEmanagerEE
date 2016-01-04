@@ -10,23 +10,23 @@
     <ui:define name="content">
         <h:form>
             <h:panelGrid columns="3" cellpadding="5">
-                <p:outputLabel for="firstName" value="First name"/>
+                <p:outputLabel for="firstName" value="Fornavn"/>
                 <p:inputText id="firstName" value="#{tenantController.item.firstName}" required="true"/>
                 <p:message for="firstName"/>
 
-                <p:outputLabel for="lastName" value="Last name"/>
+                <p:outputLabel for="lastName" value="Etternavn"/>
                 <p:inputText id="lastName" value="#{tenantController.item.lastName}" required="true"/>
                 <p:message for="lastName"/>
 
-                <p:outputLabel for="email" value="E-mail"/>
+                <p:outputLabel for="email" value="E-post"/>
                 <p:inputText id="email" value="#{tenantController.item.email}" required="true"/>
                 <p:message for="email"/>
 
-                <p:outputLabel for="phone" value="Phone"/>
+                <p:outputLabel for="phone" value="Telefon"/>
                 <p:inputText id="phone" value="#{tenantController.item.phone}" required="true"/>
                 <p:message for="phone"/>
 
-                <p:outputLabel for="ssn" value="SSN"/>
+                <p:outputLabel for="ssn" value="Personnummer"/>
                 <p:inputText id="ssn" value="#{tenantController.item.ssn}" required="true"/>
                 <p:message for="ssn"/>
             </h:panelGrid>

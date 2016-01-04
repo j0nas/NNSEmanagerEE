@@ -1,7 +1,9 @@
 package controller;
 
 import dto.Mailbox;
+import dto.Tenant;
 import infrastructure.mailbox.MailboxDao;
+import infrastructure.tenant.TenantDao;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -16,6 +18,9 @@ public class MailboxController {
     private int itemId;
     @Inject
     private MailboxDao dao;
+    @Inject
+    private TenantDao tenantDao;
+    private int primaryTenantId;
 
     @PostConstruct
     void init() {
@@ -27,6 +32,8 @@ public class MailboxController {
     }
 
     public Mailbox persist() {
+        final Tenant tenant = tenantDao.findById(primaryTenantId);
+        item.setPrimaryLeaser(tenant);
         return getDao().persist(item);
     }
 
@@ -61,5 +68,13 @@ public class MailboxController {
     public List<SelectItem> getRooms() {
         return dao.getAll().stream().map(mailbox ->
                 new SelectItem(mailbox.getId(), String.valueOf(mailbox.getNumber()))).collect(Collectors.toList());
+    }
+
+    public int getPrimaryTenantId() {
+        return primaryTenantId;
+    }
+
+    public void setPrimaryTenantId(int primaryTenantId) {
+        this.primaryTenantId = primaryTenantId;
     }
 }

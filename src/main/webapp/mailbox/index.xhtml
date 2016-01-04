@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="../template.xhtml">
+    <ui:define name="content">
+        <p:dataTable id="mailboxes" var="mailbox" value="#{mailboxController.getAll()}">
+            <p:column headerText="Nummer">
+                <h:outputText value="#{mailbox.number}"/>
+            </p:column>
+            <p:column headerText="Primær leietaker">
+                <h:outputText value="#{mailbox.primaryLeaser.firstName} #{mailbox.primaryLeaser.lastName}"/>
+            </p:column>
+            <p:column headerText="Handlinger">
+                <p:link outcome="details">
+                    <f:param name="id" value="#{mailbox.id}"/>
+                    <p:button value="Detaljer"/>
+                </p:link>
+                <p:commandButton value="Slett" action="#{mailboxController.delete(mailbox.id)}" update="mailboxes"/>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:composition>
+</html>

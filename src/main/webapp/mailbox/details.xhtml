@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/html">
+<ui:composition template="../template.xhtml">
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="id" value="#{mailboxController.itemId}"/>
+            <f:viewAction action="#{mailboxController.initItem()}"/>
+        </f:metadata>
+
+        <h:panelGrid columns="2" cellpadding="10">
+            <f:facet name="header">
+                <h:outputText value="Postboksopplysninger"/>
+            </f:facet>
+            <p:outputText value="ID"/>
+            <p:outputText value="#{mailboxController.item.id}"/>
+            <p:outputText value="Nummer"/>
+            <p:outputText value="#{mailboxController.item.number}"/>
+            <p:outputText value="Primær leietaker"/>
+            <p:link value="#{mailboxController.item.primaryLeaser.firstName} #{mailboxController.item.primaryLeaser.lastName}"
+                    outcome="/tenant/details.xhtml?id=#{mailboxController.item.primaryLeaser.id}"/>
+        </h:panelGrid>
+    </ui:define>
+</ui:composition>
+</html>

@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://xmlns.jcp.org/jsf/html">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/html">
 <ui:composition template="../template.xhtml">
     <ui:define name="content">
         <f:metadata>
@@ -23,7 +24,8 @@
             <p:outputText value="Pris"/>
             <p:outputText value="#{roomController.item.pricePerMonth}"/>
             <p:outputText value="Primær leietaker"/>
-            <p:outputText value="#{roomController.item.primaryLeaser}"/>
+            <p:link value="#{roomController.item.primaryLeaser.firstName} #{roomController.item.primaryLeaser.lastName}"
+                    outcome="/tenant/details.xhtml?id=#{roomController.item.primaryLeaser.id}"/>
         </h:panelGrid>
     </ui:define>
 </ui:composition>

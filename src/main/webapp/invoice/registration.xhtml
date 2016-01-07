@@ -22,12 +22,17 @@
                 <p:inputText id="amount" value="#{invoiceController.item.amount}" required="true"/>
                 <p:message for="amount"/>
 
-                <p:outputLabel for="dueDate" value="Telefon"/>
-                <p:calendar id="dueDate" value="#{invoiceController.dueDate}" pattern="dd.MM.yyy HH:mm"
-                            required="true"/>
+                <p:outputLabel for="billingDate" value="Genereringsdato"/>
+                <p:calendar id="billingDate" value="#{invoiceController.billingDate}" pattern="dd.MM.yyy"
+                            required="true" mode="inline"/>
+                <p:message for="billingDate"/>
+
+                <p:outputLabel for="dueDate" value="Forfallsdato"/>
+                <p:calendar id="dueDate" value="#{invoiceController.dueDate}" pattern="dd.MM.yyy" required="true"
+                            mode="inline"/>
                 <p:message for="dueDate"/>
             </h:panelGrid>
-            <p:commandButton value="Submit" ajax="false" action="#{tenantController.persist}" icon="ui-icon-check"/>
+            <p:commandButton value="Submit" ajax="false" action="#{invoiceController.persist}" icon="ui-icon-check"/>
         </h:form>
     </ui:define>
 </ui:composition>

@@ -23,6 +23,7 @@ public class InvoiceController {
 
     private int tenantId;
     private Date dueDate;
+    private Date billingDate;
 
     public Date getDueDate() {
         return dueDate;
@@ -41,8 +42,14 @@ public class InvoiceController {
         item = getDao().findById(itemId);
     }
 
+    public TenantDao getTenantDao() {
+        return tenantDao;
+    }
+
     public Invoice persist() {
+        item.setBilledTenant(getTenantDao().findById(getTenantId()));
         item.setDueDate(dueDate);
+        item.setBillingDate(billingDate);
         return getDao().persist(item);
     }
 
@@ -80,5 +87,13 @@ public class InvoiceController {
 
     public void setTenantId(int tenantId) {
         this.tenantId = tenantId;
+    }
+
+    public Date getBillingDate() {
+        return billingDate;
+    }
+
+    public void setBillingDate(Date billingDate) {
+        this.billingDate = billingDate;
     }
 }

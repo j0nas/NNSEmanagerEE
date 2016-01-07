@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @NamedQuery(name = "Tenant.getAll", query = "SELECT t FROM Tenant t")
@@ -17,7 +18,8 @@ public class Tenant {
     private String email;
 
     @NotNull
-    private int ssn;
+    @Size(min = 11, max = 11)
+    private String ssn;
 
     @NotNull
     private String firstName;
@@ -25,7 +27,9 @@ public class Tenant {
     @NotNull
     private String lastName;
 
-    private int phone;
+    @NotNull
+    @Size(min = 8)
+    private String phone;
 
     public String getEmail() {
         return email;
@@ -35,11 +39,11 @@ public class Tenant {
         this.email = email;
     }
 
-    public int getSsn() {
+    public String getSsn() {
         return ssn;
     }
 
-    public void setSsn(int ssn) {
+    public void setSsn(String ssn) {
         this.ssn = ssn;
     }
 
@@ -59,11 +63,11 @@ public class Tenant {
         this.lastName = lastName;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

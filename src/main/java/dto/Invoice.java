@@ -1,6 +1,8 @@
 package dto;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -12,6 +14,8 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
+    @Valid
     @OneToOne
     private Tenant billedTenant;
 
@@ -19,11 +23,13 @@ public class Invoice {
     @Min(0)
     private int amount;
 
-    private Date billingDate;
     @NotNull
-    private Date dueDate;
+    private Date billingDate;
 
     @NotNull
+    @Future
+    private Date dueDate;
+
     public Date getDueDate() {
         return dueDate;
     }

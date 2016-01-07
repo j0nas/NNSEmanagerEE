@@ -1,6 +1,7 @@
 package dto;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -19,6 +20,8 @@ public class Room {
     @Min(0)
     private float pricePerMonth;
 
+    @NotNull
+    @Valid
     @OneToOne
     private Tenant primaryLeaser;
 

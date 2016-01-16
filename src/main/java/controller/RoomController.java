@@ -7,6 +7,8 @@ import infrastructure.tenant.TenantDao;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import java.util.List;
@@ -39,10 +41,13 @@ public class RoomController {
         item = getDao().findById(itemId);
     }
 
-    public Room persist() {
+    public void persist() {
         final Tenant tenant = tenantDao.findById(primaryTenantId);
         item.setPrimaryLeaser(tenant);
-        return getDao().persist(item);
+        getDao().persist(item);
+
+        FacesContext.getCurrentInstance().addMessage("persistSuccess",
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Suksess", "Lagring av rom vellykket."));
     }
 
     public boolean delete(int id) {

@@ -10,6 +10,7 @@
 <ui:composition template="../template.xhtml">
     <ui:define name="content">
         <h:form>
+            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
             <h:panelGrid columns="3" cellpadding="5">
                 <p:outputLabel for="billedTenant" value="Leietaker for fakturering"/>
                 <p:selectOneMenu id="billedTenant" value="#{invoiceController.tenantId}" required="true">

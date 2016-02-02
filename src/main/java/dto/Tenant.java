@@ -31,6 +31,10 @@ public class Tenant {
     @Size(min = 8)
     private String phone;
 
+    @ManyToOne
+    @JoinColumn(name = "tenant_id")
+    private Room room;
+
     public String getEmail() {
         return email;
     }

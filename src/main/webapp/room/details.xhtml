@@ -26,6 +26,8 @@
             <p:outputText value="Primær leietaker"/>
             <p:link value="#{roomController.item.primaryLeaser.firstName} #{roomController.item.primaryLeaser.lastName}"
                     outcome="/tenant/details.xhtml?id=#{roomController.item.primaryLeaser.id}"/>
+            <p:outputText value="Legg til sekundære leietakere"/>
+            <p:link value="Legg til" outcome="/tenant/details.xhtml?id=#{roomController.item.primaryLeaser.id}"/>
         </h:panelGrid>
     </ui:define>
 </ui:composition>
